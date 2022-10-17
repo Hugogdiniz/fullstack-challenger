@@ -7,13 +7,12 @@ import java.util.Objects;
 
 @Document
 public class User {
-
-
     @Id
     private Long id;
     private String name;
     private String email;
     private String password;
+
 
     public User(){
 
