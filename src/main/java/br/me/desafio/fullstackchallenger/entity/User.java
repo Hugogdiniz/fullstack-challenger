@@ -8,7 +8,7 @@ import java.util.Objects;
 @Document
 public class User {
     @Id
-    private Long id;
+    private String id;
     private String name;
     private String email;
     private String password;
@@ -18,18 +18,18 @@ public class User {
 
     }
 
-    public User(Long id, String name, String email, String password) {
+    public User(String id, String name, String email, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
