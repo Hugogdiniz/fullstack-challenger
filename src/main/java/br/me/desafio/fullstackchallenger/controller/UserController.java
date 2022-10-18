@@ -19,13 +19,20 @@ public class UserController {
 //        return ResponseEntity.ok().body(list);
 //    }
 
-//    @GetMapping("/usercreate")
-//    public String home() {
-//        return "UserCreate";
-//    }
+    @GetMapping("/usercreate")
+    public String homecreate() {
+        return "UserCreate";
+    }
+
+    @GetMapping("/userlogin")
+    public String homelogin() {
+        return "UserLogin";
+    }
 
     @PostMapping("/usercreate")
-    public void create(User user) {
+    public String create(User user) {
+        service.createValidation(user);
         service.insert(user);
+        return "redirect:/userlogin";
     }
 }

@@ -19,4 +19,18 @@ public class UserService {
     public User insert(User obj) {
         return repository.insert(obj);
     }
+
+    public void createValidation(User obj) {
+        User existsUserName = repository.findByName(obj.getName());
+
+        if (existsUserName != null) {
+            throw new Error("User already exists!");
+        }
+
+        User existUserEmail = repository.findByEmail(obj.getEmail());
+
+        if (existUserEmail != null) {
+            throw new Error("User already exists!");
+        }
+    }
 }
