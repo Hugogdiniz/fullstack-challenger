@@ -6,23 +6,78 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.104.2">
-    <title>Fixed top navbar example · Bootstrap v5.2</title>
+    <title>Home</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet"  th:href="@{/css/home.css}"/>
     <script th:src="@{/js/userregistration.js}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-fixed/">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="navbar-top-fixed.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+
+
+
+    <script>
+      $(document).ready(function () {
+        $("[name='tipoDePessoa']").on("change", function () {
+          $(".cpfHiden, .cnpjHiden").hide(); // esconde tudo
+          if ($('#pessoaFisica').prop('checked')) {
+            var idx = $(this).index(); // pega o índice do radio
+            $(".cpfHiden:eq(" + idx + ")").show(); // mostra a classe pelo índice
+          } else {
+            var idx = $(this).index(); // pega o índice do radio
+            $(".cnpjHiden:eq(" + idx + ")").show(); // mostra a classe pelo índice
+          }
+        });
+      });
+
+      $(document).ready(function () {
+        $("#cep").mask('00.000-000', {reverse: true});
+      });
+    </script>
   </head>
 
 
 
   <body class="bg-custom">
-    
+
+  <label for="cep" class="form-label">CEP</label>
+  <input type="text" class="form-control d-inline-block" id="cep" placeholder="" value=""
+         required>
+
+
+
+  <div class="1">
+    <label class=" ts-18-medium ts-dark-gray mb-3">Tipo de fornecedor:</label>
+    <div class="form-check">
+      <input type="radio" name="tipoDePessoa"  th:value="NATURAL_PERSON" class="form-check-input" id="pessoaFisica">
+      <label class="form-check-label" for="pessoaFisica">Pessoa Física</label>
+    </div>
+    <div class="form-check">
+      <input type="radio" name="tipoDePessoa"  th:value="LEGAL_PERSON" class="form-check-input" id="pessoaJuridica">
+      <label class="form-check-label" for="pessoaJuridica">Pessoa Juridica</label>
+    </div>
+
+    <div style="display: none" class="cpfHiden">
+      <label for="cpf" class="form-label">CPF:</label>
+      <input class="form-control"  id="cpf" placeholder="000.000.000-00" value="" required>
+    </div>
+    <div style="display: none" class="cnpjHiden">
+      <label for="cnpj" class="form-label">CNPJ:</label>
+      <input type="text" class="form-control"  id="cnpj" placeholder=" XX.XXX.XXX/0001-XX" value="" required>
+    </div>
+  </div>
+
+
+
+
+
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">CEAP - Desafio 3</a>

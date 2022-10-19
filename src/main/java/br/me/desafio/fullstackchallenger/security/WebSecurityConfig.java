@@ -22,15 +22,14 @@ public class WebSecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/css/**", "/webjars/**", "/image/**", "/js/**").permitAll()
-                .antMatchers("/usercreate", "/userlogin").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/providercreate").authenticated()
+                .anyRequest().permitAll()
                 .and()
                     .formLogin()
                     .loginPage("/userlogin")
                     .usernameParameter("email")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/home", true)
+                    .defaultSuccessUrl("/", true)
                     .failureUrl("/login-error")
                     .permitAll()
                 .and()

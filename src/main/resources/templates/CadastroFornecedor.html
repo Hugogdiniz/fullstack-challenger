@@ -6,21 +6,47 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.104.2">
-  <title>Checkout example · Bootstrap v5.2</title>
-  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Home</title>
   <!-- CSS only -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <!-- JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-          crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" th:href="@{/css/cadastro-fornecedor-form-validation.css}"/>
-  <script th:src="@{/js/cadastro-fornecedor-form-validation.js}"></script>
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/checkout/">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <link rel="stylesheet"  th:href="@{/css/fornecedorCadastro.css}"/>
+  <script th:src="@{/js/fornecedorCadastro.js}"></script>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-fixed/">
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="form-validation.css" rel="stylesheet">
+  <link href="navbar-top-fixed.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("[class='radio']").on("change", function () {
+        $(".cpfHiden, .cnpjHiden").hide(); // esconde tudo
+        if ($('#pessoaFisica').prop('checked')) {
+          var idx = $(this).index(); // pega o índice do radio
+          $(".cpfHiden:eq(" + idx + ")").show(); // mostra a classe pelo índice
+        } else {
+          var idx = $(this).index(); // pega o índice do radio
+          $(".cnpjHiden:eq(" + idx + ")").show(); // mostra a classe pelo índice
+        }
+      });
+    });
+
+    $(document).ready(function () {
+      $("#cep").mask('00.000-000', {reverse: true});
+    });
+
+    $(document).ready(function () {
+      $("#cpf").mask('000.000.000-00', {reverse: true});
+      $("#cnpj").mask('00.00.00/0000-00', {reverse: true});
+    });
+
+  </script>
+
+
 
 
 </head>
@@ -29,7 +55,6 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
       <h2>Checkout form</h2>
       <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
         has a validation state that can be triggered by attempting to submit the form without completing it.</p>
@@ -51,12 +76,21 @@
             <div class="1">
               <label class=" ts-18-medium ts-dark-gray mb-3">Tipo de fornecedor:</label>
               <div class="form-check">
-                <input type="radio" name="tipoDePessoa" class="form-check-input" id="pessoaFisica">
+                <input type="radio" name="tipoDePessoa" th:field="*{personType}" th:value="NATURAL_PERSON" class="radio" id="pessoaFisica">
                 <label class="form-check-label" for="pessoaFisica">Pessoa Física</label>
               </div>
               <div class="form-check">
-                <input type="radio" name="tipoDePessoa" class="form-check-input" id="pessoaJuridica">
+                <input type="radio" name="tipoDePessoa" th:field="*{personType}" th:value="LEGAL_PERSON" class="radio" id="pessoaJuridica">
                 <label class="form-check-label" for="pessoaJuridica">Pessoa Juridica</label>
+              </div>
+
+              <div style="display: none" class="cpfHiden">
+                <label for="cpf" class="form-label">CPF:</label>
+                <input class="form-control" th:field="*{cpfOrCnpj}" id="cpf" placeholder="000.000.000-00" value="" required>
+              </div>
+              <div style="display: none" class="cnpjHiden">
+                <label for="cnpj" class="form-label">CNPJ:</label>
+                <input type="text" class="form-control" th:field="*{cpfOrCnpj}" id="cnpj" placeholder=" XX.XXX.XXX/0001-XX" value="" required>
               </div>
             </div>
 
@@ -73,8 +107,8 @@
           <h4 class="mb-3">Endereço</h4>
           <div class="row g-3">
             <div class="col-sm-4">
-              <label for="firstName" class="form-label">CEP</label>
-              <input type="text" class="form-control d-inline-block" id="firstName" placeholder="" value=""
+              <label for="cep" class="form-label">CEP</label>
+              <input type="text" class="form-control d-inline-block" id="cep" placeholder="" value=""
                      required>
               <div class="invalid-feedback">
                 Valid first name is required.
@@ -208,8 +242,8 @@
 </div>
 
 
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="form-validation.js"></script>
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

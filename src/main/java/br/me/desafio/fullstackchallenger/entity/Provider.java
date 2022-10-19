@@ -1,5 +1,6 @@
 package br.me.desafio.fullstackchallenger.entity;
 
+import br.me.desafio.fullstackchallenger.enums.PersonType;
 import org.apache.tomcat.jni.Address;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +15,10 @@ public class Provider {
     @Id
     private String id;
     private String name;
+    private PersonType personType;
+    private String cpfOrCnpj;
+
+
     /*  private String nameContact;
         private String emailContact;
         private PersonType personType;
@@ -73,8 +78,27 @@ public class Provider {
         return Objects.equals(id, provider.id);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+
+    public String getCpfOrCnpj() {
+        return cpfOrCnpj;
+    }
+
+    public void setCpfOrCnpj(String cpfOrCnpj) {
+        this.cpfOrCnpj = cpfOrCnpj;
+    }
+
+
+    public PersonType getPersonType() {
+        return personType;
+    }
+
+    public void setPersonType(PersonType personType) {
+        this.personType = personType;
     }
 }
