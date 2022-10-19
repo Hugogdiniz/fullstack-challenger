@@ -12,32 +12,32 @@ import java.util.Objects;
 public class Provider {
 
     @Id
-    private Long id;
+    private String id;
     private String name;
     /*  private String nameContact;
         private String emailContact;
         private PersonType personType;
         private String cpfOrCnpj;
         private String activityDescription;*/
-    private Address address;
-    private List<PhoneNumber> phoneList = new ArrayList<>();
+//    private Address address;
+//    private List<PhoneNumber> phoneList = new ArrayList<>();
 
     public Provider(){
 
     }
 
-    public Provider(Long id, String name, Address address, List<PhoneNumber> phoneList) {
+    public Provider(String id, String name, Address address, List<PhoneNumber> phoneList) {
         this.id = id;
         this.name = name;
-        this.address = address;
-        this.phoneList = phoneList;
+//        this.address = address;
+//        this.phoneList = phoneList;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,21 +49,21 @@ public class Provider {
         this.name = name;
     }
 
-    public Address getAddress() {
-        return address;
-    }
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
+//
+//    public List<PhoneNumber> getPhoneList() {
+//        return phoneList;
+//    }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<PhoneNumber> getPhoneList() {
-        return phoneList;
-    }
-
-    public void setPhoneList(List<PhoneNumber> phoneList) {
-        this.phoneList = phoneList;
-    }
+//    public void setPhoneList(List<PhoneNumber> phoneList) {
+//        this.phoneList = phoneList;
+//    }
 
     @Override
     public boolean equals(Object o) {

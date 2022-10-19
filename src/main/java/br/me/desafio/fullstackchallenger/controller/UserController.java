@@ -25,7 +25,7 @@ public class UserController {
 //    }
 
     //Abrir pagina home
-    @GetMapping( "/home")
+    @GetMapping( {"/", "/home"})
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("home");
         return mav;
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     //Abrir pagina de login do usuário
-    @GetMapping({"/","/userlogin"})
+    @GetMapping("/userlogin")
     public ModelAndView homelogin() {
         ModelAndView mav = new ModelAndView("UserLogin");
         return mav;

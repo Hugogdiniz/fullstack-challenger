@@ -38,11 +38,11 @@
     <div class="row g-3">
       <div>
         <h4 class="mb-3">Fornecedor</h4>
-        <form class="needs-validation" novalidate>
+        <form method="post" th:action="@{/providercreate}" th:object="${provider}" class="needs-validation" novalidate>
           <div class="row g-3">
             <div class="col-sm-12">
               <label for="nomeFornecedor" class="form-label">Nome do fornecedor:</label>
-              <input type="text" class="form-control" id="nomeFornecedor" placeholder="" value="" required>
+              <input type="text" class="form-control" th:field="*{name}" id="nomeFornecedor" placeholder="" value="" required>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
