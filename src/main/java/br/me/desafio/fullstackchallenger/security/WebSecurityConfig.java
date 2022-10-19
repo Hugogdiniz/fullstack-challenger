@@ -30,7 +30,7 @@ public class WebSecurityConfig{
                     .loginPage("/userlogin")
                     .usernameParameter("email")
                     .passwordParameter("password")
-                    .defaultSuccessUrl("/", true)
+                    .defaultSuccessUrl("/home", true)
                     .failureUrl("/login-error")
                     .permitAll()
                 .and()

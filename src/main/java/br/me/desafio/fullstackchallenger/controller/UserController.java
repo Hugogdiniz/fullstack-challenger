@@ -56,6 +56,15 @@ public class UserController {
         return "UserLogin";
     }
 
+    @GetMapping("/register-success")
+    public String loginesuccess(ModelMap model) {
+        model.addAttribute("alerta", "success");
+        model.addAttribute("titulo", "Credenciais inválidas!");
+        model.addAttribute("texto", "Login ou senha incorretos, tente novamente.");
+        model.addAttribute("subtexto", "Caso não tenha conta, se cadastre!");
+        return "UserLogin";
+    }
+
 
     @PostMapping("/usercreate")
     public String create(User user) {
