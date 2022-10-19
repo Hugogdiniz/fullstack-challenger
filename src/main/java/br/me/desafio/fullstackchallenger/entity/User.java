@@ -2,13 +2,16 @@ package br.me.desafio.fullstackchallenger.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
-@Document
+@Document(collection = "user")
 public class User implements UserDetails {
     @Id
     private String id;
@@ -26,6 +29,10 @@ public class User implements UserDetails {
         this.name = name;
         this.email = email;
         this.password = password;
+
+    }
+
+    public User(String email, String password) {
     }
 
     public String getId() {
@@ -56,34 +63,33 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
-
+    @Override
     public String getPassword() {
-        return password;
+        return this.password;
     }
-
     @Override
     public String getUsername() {
-        return null;
+        return this.email;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     public void setPassword(String password) {

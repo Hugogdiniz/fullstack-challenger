@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="/Static/Style.css"/>
-    <script type="text/javascript" src="/static/UserRegistration.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script type="text/javascript" src="/JS/UserRegistration.js"></script>
     <title>UserRegistration</title>
 
 </head>
@@ -20,23 +20,23 @@
                 <div class="form-items">
                     <h3>Registrar Usuário</h3>
                     <p>Preencha os dados abaixo.</p>
-                    <form method="POST" action="/usercreate" class="requires-validation" novalidate>
+                    <form method="POST" th:action="@{/usercreate}" th:object="${user}" class="requires-validation" novalidate>
 
                         <div class="col-md-12">
-                            <input class="form-control" type="text" name="name" placeholder="Nome Completo" required>
+                            <input class="form-control" type="text" th:field="*{name}" placeholder="Nome Completo" required>
                             <div class="valid-feedback">Nome valido!</div>
                             <div class="invalid-feedback">Nome invalido!</div>
                         </div>
 
                         <div class="col-md-12">
-                            <input class="form-control" type="email" name="email" placeholder="E-mail" required>
+                            <input class="form-control" type="email" th:field="*{email}" placeholder="E-mail" required>
                             <div class="valid-feedback">Email valido!</div>
                             <div class="invalid-feedback">Email invalido!</div>
                         </div>
 
 
                         <div class="col-md-12">
-                            <input class="form-control" type="password" name="password" placeholder="Senha" required>
+                            <input class="form-control" type="password" th:field="*{password}" placeholder="Senha" required>
                             <div class="valid-feedback">Senha valida!</div>
                             <div class="invalid-feedback">Senha invalida!</div>
                         </div>

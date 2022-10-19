@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-  <link rel="stylesheet" href="/Static/Style.css"/>
-  <script type="text/javascript" src="/static/UserRegistration.js"></script>
+
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
+  <script type="text/javascript" src="/JS/UserRegistration.js"></script>
   <title>UserLogin</title>
 
 </head>
@@ -20,10 +22,17 @@
         <div class="form-items">
           <h3>Fazer Login</h3>
           <p>Preencha os dados abaixo.</p>
-          <form method="POST" action="" class="requires-validation" novalidate>
+          <form method="POST" th:action="@{/userlogin}" class="requires-validation">
+
+            <div th:if="${alerta != null}" th:class="${alerta == 'erro'} ? 'alert alert-danger' : 'alert alert-success'" role="alert">
+              <h4 th:text="${titulo}" class="alert-heading">Credenciais...</h4>
+              <p th:text="${texto}">Login ou senha incorretos...</p>
+              <hr>
+              <p class="mb-0"><small th:text="${subtexto}">Acesso permitido...</small> </p>
+            </div>
 
             <div class="col-md-12">
-              <input class="form-control" type="email" name="email" placeholder="E-mail" required>
+              <input class="form-control" type="email" name="email" placeholder="E-mail" required autofocus>
               <div class="valid-feedback">Email valido!</div>
               <div class="invalid-feedback">Email invalido!</div>
             </div>
