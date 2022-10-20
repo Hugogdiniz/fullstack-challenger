@@ -5,7 +5,6 @@ import org.apache.tomcat.jni.Address;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,10 +15,45 @@ public class Provider {
     private String id;
     private String name;
     private PersonType personType;
-    private String cpfOrCnpj;
+    private String cpf;
+    private String cnpj;
+    private String activityDescription;
+    private Endereco endereco;
 
 
-    /*  private String nameContact;
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getActivityDescription() {
+        return activityDescription;
+    }
+
+    public void setActivityDescription(String activityDescription) {
+        this.activityDescription = activityDescription;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+/*  private String nameContact;
         private String emailContact;
         private PersonType personType;
         private String cpfOrCnpj;
@@ -82,15 +116,6 @@ public class Provider {
     @Override
     public int hashCode() {
         return Objects.hash(id);
-    }
-
-
-    public String getCpfOrCnpj() {
-        return cpfOrCnpj;
-    }
-
-    public void setCpfOrCnpj(String cpfOrCnpj) {
-        this.cpfOrCnpj = cpfOrCnpj;
     }
 
 
