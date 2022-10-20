@@ -39,6 +39,7 @@
       $("#cep").mask('00.000-000', {reverse: true});
       $("#cpf").mask("000.000.000-00", {reverse: true});
       $("#cnpj").mask("00.000.000/0000-00", {reverse: true});
+      $("#telefoneList").mask("(00) 0 0000-0000", {reverse: true});
     });
 
 
@@ -111,28 +112,50 @@
 </head>
 <body class="bg-light">
 
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CEAP - Desafio 3</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/providercreate">Cadastrar Fornecedor</a>
+        </li>
+      </ul>
+      <form th:action="@{/logout}" method="post" class="user-logout">
+        <input class="btn btn-outline-danger" type="submit" value="Logout" />
+      </form>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
   <main>
-    <div class="py-5 text-center">
-      <h2>Checkout form</h2>
-      <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
-        has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <div class="py-5 text-center mt-lg-5 ">
+      <h2>Cadastre seu fornecedor</h2>
     </div>
 
     <div class="row g-3">
       <div>
         <h4 class="mb-3">Fornecedor</h4>
-        <form method="post" th:action="@{/providercreate}" th:object="${provider}" class="needs-validation" novalidate>
+        <form method="post" th:action="@{/providercreate}" th:object="${provider}" class="needs-validation">
           <div class="row g-3">
             <div class="col-sm-12">
               <label for="nomeFornecedor" class="form-label">Nome do fornecedor:</label>
-              <input type="text" class="form-control" th:field="*{name}" id="nomeFornecedor" placeholder="" value="" required>
+              <input type="text" class="form-control" th:field="*{name}" id="nomeFornecedor" placeholder="" value="" required/>
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
             </div>
 
             <div class="1">
+              <input th:field="*{id}" type="hidden" class="form-control d-inline-block" id="id" placeholder="" value=""
+                     >
               <label class=" ts-18-medium ts-dark-gray mb-3">Tipo de fornecedor:</label>
               <div class="form-check">
                 <input type="radio" name="tipoDePessoa" th:field="*{personType}" th:value="NATURAL_PERSON" class="radio" id="pessoaFisica">
@@ -145,11 +168,11 @@
 
               <div style="display: none" class="cpfHiden">
                 <label for="cpf" class="form-label">CPF:</label>
-                <input class="form-control" th:field="*{cpf}" id="cpf" placeholder="000.000.000-00" value="" required>
+                <input class="form-control" th:field="*{cpf}" id="cpf" placeholder="000.000.000-00" value="">
               </div>
               <div style="display: none" class="cnpjHiden">
                 <label for="cnpj" class="form-label">CNPJ:</label>
-                <input type="text" class="form-control" th:field="*{cnpj}" id="cnpj" placeholder="00.000.000/0000-00" value="" required>
+                <input type="text" class="form-control" th:field="*{cnpj}" id="cnpj" placeholder="00.000.000/0000-00" value="">
               </div>
             </div>
 
@@ -256,35 +279,31 @@
 
 
           <h4 class="mb-3">Telefone</h4>
+          <table>
+            <thead>
+            <tr>
+              <th>Nª</th>
+              <th>Telefone</th>
+              <th>
+                <button type="submit" th:name="addRow">Adicionar +1 Telefone</button>
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="phone, list : *{phoneList}">
+              <td th:text="${list.count}"></td>
 
-<!--          <section id="phoneListSection">-->
-<!--            <table class="phone-add-table">-->
-<!--              <thead>-->
-<!--              <tr class="ts-18-medium ts-dark-gray">-->
-<!--                <th>Id</th>-->
-<!--                <th>Telefone</th>-->
-<!--                <th>-->
-<!--                  <button type="submit" class="btn-phone ts-18-medium ts-white" th:name="addPhone">-->
-<!--                    Adicionar telefone-->
-<!--                  </button>-->
-<!--                </th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--              <tr th:each="phone, list : *{phoneList}">-->
-<!--                <td class="ts-14-medium" th:text="${list.count}">1</td>-->
-<!--                <td><input class="ts-14-medium phone-input" id="phone" type="text"-->
-<!--                           th:field="*{phoneList[__${list.index}__].contact}" required/></td>-->
-<!--                <td>-->
-<!--                  <button type="submit" class="btn-phone ts-18-medium ts-white" th:value="${list.index}"-->
-<!--                          th:name="removePhone">-->
-<!--                    Remover telefone-->
-<!--                  </button>-->
-<!--                </td>-->
-<!--              </tr>-->
-<!--              </tbody>-->
-<!--            </table>-->
-<!--          </section>-->
+                <td>
+                  <input th:field="*{phoneList[__${list.index}__].numero}" type="text" placeholder="(DDD) 0 0000-0000" class="form-control d-inline-block" id="telefoneList"
+                         value="" required>
+                </td>
+              <td>
+                <button type="submit" th:name="removeRow"
+                        th:value="${list.index}">Romover Telefone</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
 
           <div class="form-button mt-3">
             <button class="w-100 btn btn-primary btn-lg mt-4" type="submit">Cadastrar</button>

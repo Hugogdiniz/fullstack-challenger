@@ -25,9 +25,9 @@ public class UserController {
 //    }
 
     //Abrir pagina home
-    @GetMapping( {"/", "/home"})
+    @GetMapping("/")
     public ModelAndView home() {
-        ModelAndView mav = new ModelAndView("home");
+        ModelAndView mav = new ModelAndView("index");
         return mav;
     }
 
@@ -56,16 +56,6 @@ public class UserController {
         return "UserLogin";
     }
 
-    @GetMapping("/register-success")
-    public String loginesuccess(ModelMap model) {
-        model.addAttribute("alerta", "success");
-        model.addAttribute("titulo", "Credenciais inválidas!");
-        model.addAttribute("texto", "Login ou senha incorretos, tente novamente.");
-        model.addAttribute("subtexto", "Caso não tenha conta, se cadastre!");
-        return "UserLogin";
-    }
-
-
     @PostMapping("/usercreate")
     public String create(User user) {
 //        ModelAndView mav = new ModelAndView("UserCreate");
@@ -74,19 +64,4 @@ public class UserController {
         return "redirect:/userlogin";
     }
 
-//    @PostMapping("/userlogin")
-//    public String login(@ModelAttribute(name = "User") User user, Model model) {
-//
-//        String username = user.getEmail();
-//        String password = user.getPassword();
-//
-//        if ("admin".equals(username) && "admin".equals(password)) {
-//            // if username and password is correct, we are returning home page
-//            return "redirect:/home";
-//        }
-//        // if username or password is wrong
-//        model.addAttribute("invalidCrtedentials", true);
-//        //returning angain login page
-//        return "redirect:/userlogin";
-//    }
 }

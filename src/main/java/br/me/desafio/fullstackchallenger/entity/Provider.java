@@ -5,6 +5,7 @@ import org.apache.tomcat.jni.Address;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,6 +22,16 @@ public class Provider {
     private Endereco endereco;
     private String nomeContato;
     private String emailContato;
+    private List<PhoneNumber> phoneList = new ArrayList<>();
+
+
+    public List<PhoneNumber> getPhoneList() {
+        return phoneList;
+    }
+
+    public void setPhoneList(List<PhoneNumber> phoneList) {
+        this.phoneList = phoneList;
+    }
 
     public String getNomeContato() {
         return nomeContato;
@@ -82,11 +93,29 @@ public class Provider {
 
     }
 
-    public Provider(String id, String name, Address address, List<PhoneNumber> phoneList) {
+    public Provider(String id, String name, PersonType personType, String cpf, String cnpj, String activityDescription, Endereco endereco, String nomeContato, String emailContato, List<PhoneNumber> phoneList) {
         this.id = id;
         this.name = name;
-//        this.address = address;
-//        this.phoneList = phoneList;
+        this.personType = personType;
+        this.cpf = cpf;
+        this.cnpj = cnpj;
+        this.activityDescription = activityDescription;
+        this.endereco = endereco;
+        this.nomeContato = nomeContato;
+        this.emailContato = emailContato;
+        this.phoneList = phoneList;
+    }
+
+    public Provider(String name, PersonType personType, String cpf, String cnpj, String activityDescription, Endereco endereco, String nomeContato, String emailContato, List<PhoneNumber> phoneList) {
+        this.name = name;
+        this.personType = personType;
+        this.cpf = cpf;
+        this.cnpj = cnpj;
+        this.activityDescription = activityDescription;
+        this.endereco = endereco;
+        this.nomeContato = nomeContato;
+        this.emailContato = emailContato;
+        this.phoneList = phoneList;
     }
 
     public String getId() {
