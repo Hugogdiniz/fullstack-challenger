@@ -19,7 +19,24 @@ public class Provider {
     private String cnpj;
     private String activityDescription;
     private Endereco endereco;
+    private String nomeContato;
+    private String emailContato;
 
+    public String getNomeContato() {
+        return nomeContato;
+    }
+
+    public void setNomeContato(String nomeContato) {
+        this.nomeContato = nomeContato;
+    }
+
+    public String getEmailContato() {
+        return emailContato;
+    }
+
+    public void setEmailContato(String emailContato) {
+        this.emailContato = emailContato;
+    }
 
     public Endereco getEndereco() {
         return endereco;

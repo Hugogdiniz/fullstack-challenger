@@ -232,7 +232,7 @@
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="contatoNome" class="form-label">Nome do contato:</label>
-              <input type="text" class="form-control d-inline-block" id="contatoNome"
+              <input th:field="*{nomeContato}" type="text" class="form-control d-inline-block" id="contatoNome"
                      placeholder="Nome do contado principal" value=""
                      required>
               <div class="invalid-feedback">
@@ -242,7 +242,7 @@
 
             <div class="col-sm-6">
               <label for="contatoTelefone" class="form-label">E-mail do contato:</label>
-              <input type="text" class="form-control d-inline-block" id="contatoTelefone"
+              <input th:field="*{emailContato}" type="text" class="form-control d-inline-block" id="contatoTelefone"
                      placeholder="exemplo@email.com" value=""
                      required>
               <div class="invalid-feedback">
