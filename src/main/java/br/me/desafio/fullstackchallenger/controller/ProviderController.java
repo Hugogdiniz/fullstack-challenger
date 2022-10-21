@@ -3,7 +3,6 @@ package br.me.desafio.fullstackchallenger.controller;
 
 import br.me.desafio.fullstackchallenger.entity.PhoneNumber;
 import br.me.desafio.fullstackchallenger.entity.Provider;
-import br.me.desafio.fullstackchallenger.entity.User;
 import br.me.desafio.fullstackchallenger.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class ProviderController {
@@ -26,7 +24,7 @@ public class ProviderController {
     @GetMapping("/providercreate")
     public ModelAndView homecreate(Provider provider) {
         provider.getPhoneList().add(new PhoneNumber());
-        ModelAndView mav = new ModelAndView("CadastroFornecedor");
+        ModelAndView mav = new ModelAndView("cadastro-fornecedor");
         return mav;
     }
 
@@ -48,7 +46,7 @@ public class ProviderController {
     // editar fornecedor
     @GetMapping("/home/editar/{id}")
     public ModelAndView showUpdateForm(@PathVariable("id") String id) {
-        ModelAndView mav = new ModelAndView("CadastroFornecedor");
+        ModelAndView mav = new ModelAndView("cadastro-fornecedor");
         Provider provider = service.findById(id);
         mav.addObject("provider", provider);
         return mav;
@@ -68,7 +66,7 @@ public class ProviderController {
     @RequestMapping(value="/providercreate", params={"addRow"})
     public String addRow(final Provider provider, final BindingResult bindingResult) {
         provider.getPhoneList().add(new PhoneNumber());
-        return "CadastroFornecedor";
+        return "cadastro-fornecedor";
     }
 
 
@@ -79,7 +77,7 @@ public class ProviderController {
             final HttpServletRequest req) {
         final Integer Id = Integer.valueOf(req.getParameter("removeRow"));
         provider.getPhoneList().remove(Id.intValue());
-        return "CadastroFornecedor";
+        return "cadastro-fornecedor";
     }
 
 }
