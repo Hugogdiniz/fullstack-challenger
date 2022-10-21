@@ -50,10 +50,10 @@ public class UserController {
     @PostMapping("/usercreate")
     public String create(User user, RedirectAttributes attributes) {
         if (service.createValidation(user) != null) {
-                attributes.addFlashAttribute("EmailExiste", "Email ja existente!");
-            return  "redirect:/usercreate";
+            attributes.addFlashAttribute("EmailExiste", "Email ja existente!");
+            return "redirect:/usercreate";
         } else
-        service.insert(user);
+            service.insert(user);
         attributes.addFlashAttribute("UsuarioCadastrado", "Usuário cadastrado com sucesso!");
         return "redirect:/userlogin";
     }

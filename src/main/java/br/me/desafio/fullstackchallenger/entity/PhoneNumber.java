@@ -14,7 +14,7 @@ public class PhoneNumber {
     private Provider provider;
 
 
-    public PhoneNumber(){
+    public PhoneNumber() {
     }
 
     public PhoneNumber(Long id, String numero, Provider provider) {

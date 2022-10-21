@@ -81,7 +81,7 @@ public class Provider {
         this.cnpj = cnpj;
     }
 
-    public Provider(){
+    public Provider() {
     }
 
     public Provider(String id, String name, PersonType personType, String cpf, String cnpj, String activityDescription, Endereco endereco, String nomeContato, String emailContato, List<PhoneNumber> phoneList) {

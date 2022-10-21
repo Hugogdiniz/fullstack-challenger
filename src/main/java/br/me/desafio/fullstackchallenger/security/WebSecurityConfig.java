@@ -15,9 +15,10 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig{
+public class WebSecurityConfig {
     @Autowired
     private UserDetailServiceImpl service;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -25,16 +26,16 @@ public class WebSecurityConfig{
                 .antMatchers("/providercreate", "/home").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                    .formLogin()
-                    .loginPage("/userlogin")
-                    .usernameParameter("email")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/home", true)
-                    .failureUrl("/login-error")
-                    .permitAll()
+                .formLogin()
+                .loginPage("/userlogin")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/home", true)
+                .failureUrl("/login-error")
+                .permitAll()
                 .and()
-                    .logout()
-                    .logoutSuccessUrl("/").permitAll();
+                .logout()
+                .logoutSuccessUrl("/").permitAll();
         return http.build();
     }
 

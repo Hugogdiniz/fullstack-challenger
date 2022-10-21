@@ -20,7 +20,7 @@ public class User implements UserDetails {
     private String password;
 
 
-    public User(){
+    public User() {
     }
 
     public User(String id, String name, String email, String password) {
@@ -61,10 +61,12 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
+
     @Override
     public String getPassword() {
         return this.password;
     }
+
     @Override
     public String getUsername() {
         return this.email;

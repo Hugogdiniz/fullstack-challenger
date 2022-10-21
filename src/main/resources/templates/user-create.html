@@ -22,7 +22,8 @@
                     <th:block th:include="/validations/email-existe.html"></th:block>
                     <form method="POST" th:action="@{/usercreate}" th:object="${user}" class="requires-validation">
                         <div class="col-md-12">
-                            <input class="form-control" type="text" th:field="*{name}" placeholder="Nome Completo" required>
+                            <input class="form-control" type="text" th:field="*{name}" placeholder="Nome Completo"
+                                   required>
                         </div>
 
                         <div class="col-md-12">

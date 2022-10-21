@@ -19,7 +19,7 @@ public class Endereco {
     private String estado;
 
 
-    public Endereco(){
+    public Endereco() {
     }
 
     public Endereco(String id, String cep, String rua, String numero, String complemento, String bairro, String cidade, String estado) {
@@ -115,12 +115,12 @@ public class Endereco {
     public String toString() {
         return
                 cep +
-                " , " + rua  +
-                " , " + numero  +
-                " , " + complemento  +
-                " , " + bairro +
-                " , " + cidade  +
-                " , " + estado
+                        " , " + rua +
+                        " , " + numero +
+                        " , " + complemento +
+                        " , " + bairro +
+                        " , " + cidade +
+                        " , " + estado
                 ;
     }
 }

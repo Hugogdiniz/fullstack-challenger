@@ -74,7 +74,7 @@ html, body {
 }
 
 
-.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+.form-content label, .was-validated .form-check-input:invalid ~ .form-check-label, .was-validated .form-check-input:valid ~ .form-check-label {
     color: #fff;
 }
 
@@ -95,13 +95,13 @@ html, body {
 }
 
 
-.btn-primary{
+.btn-primary {
     background-color: #6C757D;
     outline: none;
     box-shadow: none;
 }
 
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
     background-color: #495056;
     outline: none !important;
     border: none !important;
@@ -133,16 +133,16 @@ html, body {
     color: #8D8D8D;
 }
 
-.mv-up{
+.mv-up {
     margin-top: -9px !important;
     margin-bottom: 8px !important;
 }
 
-.invalid-feedback{
+.invalid-feedback {
     color: #ff606e;
 }
 
-.valid-feedback{
+.valid-feedback {
     color: #2acc80;
 }
 

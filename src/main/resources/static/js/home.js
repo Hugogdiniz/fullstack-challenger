@@ -3,9 +3,9 @@ function redirecionarCadastroFornecedor() {
 }
 
 function redirecionarDelete(id) {
-    window.location.href = '/home/deletar/'+id;
+    window.location.href = '/home/deletar/' + id;
 }
 
 function redirecionarPut(id) {
-    window.location.href = '/home/editar/'+id;
+    window.location.href = '/home/editar/' + id;
 }

@@ -1,41 +1,44 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>index</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet"  th:href="@{/css/home.css}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/home.css}"/>
     <script th:src="@{js/user-registration.js}"></script>
-  </head>
+</head>
 
 
-  <body class="bg-custom">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
+<body class="bg-custom">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
         <a class="navbar-brand" href="#">CEAP - Desafio 3</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0"></ul>
-          <button class="btn btn-outline-success mx-3 px-3" onclick="redirecionarlogin()" type="button">Login</button>
-          <button class="btn btn-outline-success" onclick="redirecionarcadastro()" type="submit">Cadastrar</button>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0"></ul>
+            <button class="btn btn-outline-success mx-3 px-3" onclick="redirecionarlogin()" type="button">Login</button>
+            <button class="btn btn-outline-success" onclick="redirecionarcadastro()" type="submit">Cadastrar</button>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>
 
-    <main class="container">
-      <div class="bg-light p-5 rounded mt-4">
+<main class="container">
+    <div class="bg-light p-5 rounded mt-4">
         <h1>Desafio 3 - ME - CEAP</h1>
-        <p class="lead">Bem vindo a minha aplicação. Para ter acesso ao cadastramento de fornecedores, você precisará realizar o cadastro.</p>
+        <p class="lead">Bem vindo a minha aplicação. Para ter acesso ao cadastramento de fornecedores, você precisará
+            realizar o cadastro.</p>
         <p class="lead">Caso ja tenha cadastro, basta fazer o seu login.</p>
         <a class="btn btn-lg btn-primary" href="/usercreate" role="button">Clique aqui para se cadastrar</a>
-      </div>
-    </main>
-  </body>
+    </div>
+</main>
+</body>
 
-  <footer class="my-5 pt-5 text-muted text-center text-small">
+<footer class="my-5 pt-5 text-muted text-center text-small">
     <p class="mb-1 align-text-bottom">&copy; 2022 CEAP ME - Hugo Diniz</p>
-  </footer>
+</footer>
 </html>

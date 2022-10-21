@@ -1,4 +1,3 @@
-
 function redirecionarlogin() {
     window.location.href = '/userlogin';
 }
