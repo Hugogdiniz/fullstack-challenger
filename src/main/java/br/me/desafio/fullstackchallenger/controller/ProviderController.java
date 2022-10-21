@@ -30,7 +30,7 @@ public class ProviderController {
         return mav;
     }
 
-    //AQUI!!!!
+    //abrir home após login
     @GetMapping("/home")
     public ModelAndView mostrarListaDeFornecedores() {
         ModelAndView mv = new ModelAndView("home");
@@ -38,12 +38,14 @@ public class ProviderController {
         return mv;
     }
 
+    // deletar fornecedor
     @GetMapping("/home/deletar/{id}")
     public String deletarFornecedor(@PathVariable("id") String id, Model model) {
         service.deleteById(id);
         return "redirect:/home";
     }
 
+    // editar fornecedor
     @GetMapping("/home/editar/{id}")
     public ModelAndView showUpdateForm(@PathVariable("id") String id) {
         ModelAndView mav = new ModelAndView("CadastroFornecedor");
@@ -52,9 +54,6 @@ public class ProviderController {
         return mav;
     }
 
-
-
-    // ACABA
 
     //Cadastro do Fornecedor
     @PostMapping("/providercreate")
@@ -65,12 +64,15 @@ public class ProviderController {
         return "redirect:/home";
     }
 
+    // adicionar linha de telefone no cadastro do fornecedor
     @RequestMapping(value="/providercreate", params={"addRow"})
     public String addRow(final Provider provider, final BindingResult bindingResult) {
         provider.getPhoneList().add(new PhoneNumber());
         return "CadastroFornecedor";
     }
 
+
+    // remover linha de telefone no cadastro do fornecedor
     @RequestMapping(value="/providercreate", params={"removeRow"})
     public String removeRow(
             final Provider provider, final BindingResult bindingResult,

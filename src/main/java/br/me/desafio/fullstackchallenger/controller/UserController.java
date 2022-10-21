@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    //Abrir pagina home
+    //Abrir pagina index
     @GetMapping("/")
     public ModelAndView home() {
         ModelAndView mav = new ModelAndView("index");
@@ -51,6 +51,7 @@ public class UserController {
         return "UserLogin";
     }
 
+    //Criar usuario
     @PostMapping("/usercreate")
     public String create(User user, RedirectAttributes attributes) {
         if (service.createValidation(user) != null) {

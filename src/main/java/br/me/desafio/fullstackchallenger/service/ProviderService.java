@@ -18,7 +18,7 @@ public class ProviderService {
     @Autowired
     ProviderRepository repository;
 
-    //AQUI!!!!!
+
     public List<Provider> findAll(){
         return repository.findAll();
     }
@@ -34,9 +34,6 @@ public class ProviderService {
         repository.delete(provider);
     }
 
-
-
-    //ACABA
 
     public Provider insert (Provider provider) {
         Provider newProvider = new Provider(

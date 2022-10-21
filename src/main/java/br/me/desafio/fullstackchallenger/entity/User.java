@@ -21,7 +21,6 @@ public class User implements UserDetails {
 
 
     public User(){
-
     }
 
     public User(String id, String name, String email, String password) {
@@ -29,7 +28,6 @@ public class User implements UserDetails {
         this.name = name;
         this.email = email;
         this.password = password;
-
     }
 
     public User(String email, String password) {

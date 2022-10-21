@@ -81,16 +81,7 @@ public class Provider {
         this.cnpj = cnpj;
     }
 
-/*  private String nameContact;
-        private String emailContact;
-        private PersonType personType;
-        private String cpfOrCnpj;
-        private String activityDescription;*/
-//    private Address address;
-//    private List<PhoneNumber> phoneList = new ArrayList<>();
-
     public Provider(){
-
     }
 
     public Provider(String id, String name, PersonType personType, String cpf, String cnpj, String activityDescription, Endereco endereco, String nomeContato, String emailContato, List<PhoneNumber> phoneList) {
@@ -133,22 +124,6 @@ public class Provider {
     public void setName(String name) {
         this.name = name;
     }
-
-//    public Address getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(Address address) {
-//        this.address = address;
-//    }
-//
-//    public List<PhoneNumber> getPhoneList() {
-//        return phoneList;
-//    }
-
-//    public void setPhoneList(List<PhoneNumber> phoneList) {
-//        this.phoneList = phoneList;
-//    }
 
     @Override
     public boolean equals(Object o) {

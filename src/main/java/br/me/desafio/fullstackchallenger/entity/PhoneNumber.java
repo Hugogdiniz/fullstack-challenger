@@ -60,5 +60,4 @@ public class PhoneNumber {
         return Objects.hash(id, numero, provider);
     }
 
-
 }
