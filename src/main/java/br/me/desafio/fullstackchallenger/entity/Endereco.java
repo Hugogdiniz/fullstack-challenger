@@ -109,4 +109,19 @@ public class Endereco {
     public int hashCode() {
         return Objects.hash(id, cep, rua, numero, complemento, bairro, cidade, estado);
     }
+
+
+    @Override
+    public String toString() {
+        return
+                cep +
+                " , " + rua  +
+                " , " + numero  +
+                " , " + complemento  +
+                " , " + bairro +
+                " , " + cidade  +
+                " , " + estado
+                ;
+    }
 }
+

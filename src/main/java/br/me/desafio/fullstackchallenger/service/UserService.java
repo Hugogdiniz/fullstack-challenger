@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -27,18 +28,13 @@ public class UserService {
         obj.setPassword(encodedPassword);
         return repository.insert(obj);
     }
+
+    public String createValidation(User obj) {
+
+        Optional<User> existUserEmail = repository.findByEmail(obj.getEmail());
+        if (existUserEmail.isPresent()) {
+            return existUserEmail.get().getEmail();
+        }
+        return null;
+    }
 }
-//    public void createValidation(User obj) {
-//        User existsUserName = repository.findByName(obj.getName());
-//
-//        if (existsUserName != null) {
-//            throw new Error("User already exists!");
-//        }
-//
-//        User existUserEmail = repository.findByEmail(obj.getEmail());
-//
-//        if (existUserEmail != null) {
-//            throw new Error("User already exists!");
-//        }
-//    }
-//}

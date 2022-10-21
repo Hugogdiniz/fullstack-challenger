@@ -3,49 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.104.2">
     <title>Home</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet"  th:href="@{/css/home.css}"/>
-    <script th:src="@{/js/userregistration.js}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/home.css}"/>
+    <script th:src="@{/JS/home.js}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-fixed/">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
-
-
-
-
-    <script>
-      function redirecionarCadastroFornecedor() {
-        window.location.href = '/providercreate';
-      }
-
-      function redirecionarDelete(id) {
-        window.location.href = '/home/deletar/'+id;
-      }
-
-      function redirecionarPut(id) {
-        window.location.href = '/home/editar/'+id;
-      }
-
-
-    </script>
   </head>
 
 
-
   <body class="bg-custom">
-
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">CEAP - Desafio 3</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
@@ -55,12 +25,11 @@
               <a class="nav-link" href="/providercreate">Cadastrar Fornecedor</a>
             </li>
           </ul>
-<!--          <form class="d-flex" role="search">-->
-<!--            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--            <button class="btn btn-outline-success" type="submit">Search</button>-->
-<!--          </form>-->
+
+          <h4 class="text-white mx-3" th:text="${#authentication.getPrincipal().getName()}"></h4>
+
           <form th:action="@{/logout}" method="post" class="user-logout">
-            <input class="btn btn-outline-danger" type="submit" value="Logout" />
+            <input class="btn btn-outline-danger" type="submit" value="Logout"/>
           </form>
         </div>
       </div>
@@ -73,7 +42,7 @@
             <div class="section-header">
               <h1 class="ts-24-bold ts-black">Seus fornecedores:</h1>
               <button class="btn btn-outline-primary" onclick="redirecionarCadastroFornecedor()" type="button">
-              Novo Fornecedor
+                Novo Fornecedor
               </button>
             </div>
             <table class="provider-table">
@@ -92,229 +61,34 @@
               </thead>
               <tbody>
               <tr class="ts-24-light ts-black" th:each="provider,list : ${providers}">
-                <td th:text="${list.count}">1</td>
-                <td th:text="${provider.name}">Nome</td>
-                <td th:text="${provider.nomeContato}">Nome Contato Principal</td>
-                <td th:text="${provider.emailContato}">E-mail Contato Principal</td>
+                <td th:text="${list.count}"></td>
+                <td th:text="${provider.name}"></td>
+                <td th:text="${provider.nomeContato}"></td>
+                <td th:text="${provider.emailContato}"></td>
                 <td th:text="${provider.cpf}">N/D</td>
                 <td th:text="${provider.cnpj}">N/D</td>
                 <td th:text="${provider.activityDescription}">Atividade</td>
-                <td th:text="${provider.endereco}"></td>
-                <td  th:each="phone, list : *{provider.phoneList}">
-                      <span th:text="${provider.phoneList[__${list.index}__].numero}"/>
-                </td>
+                <td th:text="${provider.endereco.toString()}"></td>
+                <td th:text="${provider.toString()}"></td>
+
                 <td>
-                  <button class="btn btn-outline-warning " height="24px" width="24px" th:onclick="redirecionarPut([[${provider.id}]]);">Editar</button>
-                  <button class="btn btn-outline-danger" height="24px" width="24px" th:onclick="redirecionarDelete([[${provider.id}]]);">Deletar</button>
+                  <button class="btn btn-outline-warning " height="24px" width="24px"
+                          th:onclick="redirecionarPut([[${provider.id}]]);">Editar
+                  </button>
+                  <button class="btn btn-outline-danger" height="24px" width="24px"
+                          th:onclick="redirecionarDelete([[${provider.id}]]);">Deletar
+                  </button>
                 </td>
               </tr>
               </tbody>
             </table>
-
           </section>
         </div>
       </div>
     </main>
 
     <footer class="my-5 pt-5 text-muted text-center text-small">
-      <p class="mb-1 align-text-bottom">&copy; 2022 CEAP ME</p>
+      <p class="mb-1 align-text-bottom">&copy; 2022 CEAP ME - Hugo Diniz</p>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
-  <style>
-
-    /* Provider list page */
-
-
-    .provider-list{
-      display: flex;
-      flex-direction: column;
-      background-color: var(--lighter-gray);
-    }
-
-    .provider-list .section-header{
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 1rem;
-      border-bottom: 0.1rem solid var(--light-gray);
-      margin-bottom: 3rem;
-    }
-
-    .btn-new-provider,
-    .btn-phone,
-    .btn-search-cep{
-      display: flex;
-      height: 4rem;
-      width: fit-content;
-      padding: 0 2rem;
-      justify-content: center;
-      align-items: center;
-      border-radius: 1rem;
-      background-color: var(--dark-blue);
-      border: none;
-    }
-
-    .btn-new-provider a{
-      text-decoration: none;
-      color: var(--white);
-    }
-
-    .btn-new-provider:hover{
-      background: var(--dark-blue-75-transparency);
-    }
-
-
-    /* Provider list */
-
-    .provider-table{
-      border-collapse: separate;
-      border-spacing: 0 1.4rem;
-      margin-top: -1.4rem; /* correct offset on first border spacing if desired */
-      text-align: center;
-    }
-    .provider-table td {
-      border: none;
-      padding: 1.4rem;
-      background-color: var(--white);
-      height: 8rem;
-    }
-    .provider-table td:first-child {
-      border-left-style: none;
-      border-top-left-radius: 1.4rem;
-      border-bottom-left-radius: 1.4rem;
-    }
-    .provider-table td:last-child {
-      border-right-style: none;
-      border-bottom-right-radius: 1.4rem;
-      border-top-right-radius: 1.4rem;
-    }
-
-
-
-
-    /* Provider Register page */
-
-
-    .provider-register{
-      display: flex;
-      flex-direction: column;
-      background-color: var(--lighter-gray);
-      align-items: center;
-    }
-
-    .provider-register .section-header{
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .btn-save-provider{
-      display: flex;
-      height: 4rem;
-      width: 320px;
-      padding: 0 2rem;
-      justify-content: center;
-      align-items: center;
-      border-radius: 1rem;
-      background-color: var(--dark-blue);
-      border: none;
-    }
-
-    .btn-save-provider:hover{
-      background: var(--dark-blue-75-transparency);
-    }
-
-    .provider-register form{
-      display: grid;
-      width: 80%;
-    }
-
-    .provider-register form .row{
-      margin-bottom: 2rem;
-    }
-
-    .provider-register .field{
-      display: flex;
-      flex-direction: column;
-    }
-
-    .provider-register form label{
-      margin-bottom: .4rem;
-    }
-
-    .provider-register form input{
-      margin-bottom: .8rem;
-    }
-
-    .provider-register form input{
-      height: 4rem;
-    }
-
-    .provider-register form input,
-    .provider-register form textarea{
-      border: 1px solid var(--light-gray);
-      border-radius: 0.4rem;
-    }
-
-    .provider-register form input[type=button],
-    .provider-register form input[type=submit],
-    .provider-register form input[type=reset] {
-      margin-top: .8rem;
-      background-color: var(--dark-blue);
-      border: none;
-    }
-
-    .provider-register form h2{
-      margin-top: 2rem;
-    }
-
-    .provider-register form hr{
-      margin-bottom: 2rem;
-    }
-
-    .provider-type{
-      display: flex;
-      align-items: center;
-    }
-
-    .provider-type input{
-      margin-right: 1.4rem;
-    }
-
-    .provider-type label{
-      margin-right: 6rem;
-    }
-
-    .phone-input{
-      width: 90%;
-    }
-
-    .cep-row{
-      display: flex;
-    }
-
-    .cep-row button{
-      margin-left: 4rem;
-    }
-
-    .row-button-form{
-      display: flex;
-      justify-content: center;
-    }
-
-    #cnpjField,
-    #cpfField{
-      display: none;
-    }
-
-    #phoneListSection{
-      margin-bottom: 3rem;
-    }
-
-
-  </style>
   </body>
 </html>

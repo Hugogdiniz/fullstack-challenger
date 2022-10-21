@@ -55,4 +55,61 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Provider list page */
+.provider-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.provider-list .section-header{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 3rem;
+}
+
+.btn-new-provider,
+.btn-phone,
+.btn-search-cep{
+  display: flex;
+  height: 4rem;
+  width: fit-content;
+  padding: 0 2rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  border: none;
+}
+
+.btn-new-provider a{
+  text-decoration: none;
+  color: var(--white);
+}
+
+/* Provider list */
+
+.provider-table{
+  border-collapse: separate;
+  border-spacing: 0 1.4rem;
+  margin-top: -1.4rem; /* correct offset on first border spacing if desired */
+  text-align: center;
+}
+.provider-table td {
+  border: none;
+  padding: 1.4rem;
+  background-color: var(--white);
+  height: 8rem;
+}
+.provider-table td:first-child {
+  border-left-style: none;
+  border-top-left-radius: 1.4rem;
+  border-bottom-left-radius: 1.4rem;
+}
+.provider-table td:last-child {
+  border-right-style: none;
+  border-bottom-right-radius: 1.4rem;
+  border-top-right-radius: 1.4rem;
+}
+
+
 

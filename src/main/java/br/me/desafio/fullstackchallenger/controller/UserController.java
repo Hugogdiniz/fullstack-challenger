@@ -18,12 +18,6 @@ public class UserController {
     @Autowired
     private UserService service;
 
-//    @GetMapping
-//    public ResponseEntity<List<User>> findAll(){
-//        List<User> list = service.findAll();
-//        return ResponseEntity.ok().body(list);
-//    }
-
     //Abrir pagina home
     @GetMapping("/")
     public ModelAndView home() {
@@ -37,6 +31,7 @@ public class UserController {
         ModelAndView mav = new ModelAndView("UserCreate");
         return mav;
     }
+
 
     //Abrir pagina de login do usuário
     @GetMapping("/userlogin")
@@ -57,10 +52,13 @@ public class UserController {
     }
 
     @PostMapping("/usercreate")
-    public String create(User user) {
-//        ModelAndView mav = new ModelAndView("UserCreate");
-//        service.createValidation(user);
+    public String create(User user, RedirectAttributes attributes) {
+        if (service.createValidation(user) != null) {
+                attributes.addFlashAttribute("EmailExiste", "Email ja existente!");
+            return  "redirect:/usercreate";
+        } else
         service.insert(user);
+        attributes.addFlashAttribute("UsuarioCadastrado", "Usuário cadastrado com sucesso!");
         return "redirect:/userlogin";
     }
 

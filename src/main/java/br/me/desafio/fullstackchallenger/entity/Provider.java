@@ -172,4 +172,14 @@ public class Provider {
     public void setPersonType(PersonType personType) {
         this.personType = personType;
     }
+
+    @Override
+    public String toString() {
+        String test = new String();
+
+        for (PhoneNumber phone : phoneList) {
+            test += phone.getNumero() + " ; ";
+        }
+        return test;
+    }
 }
