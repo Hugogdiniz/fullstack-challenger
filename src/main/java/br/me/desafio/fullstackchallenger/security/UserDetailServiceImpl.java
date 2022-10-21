@@ -22,11 +22,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private UserRepository repository;
 
 
-//    @Transactional(readOnly = true)
-//    public User findByEmail(String username) {
-//        return repository.findByEmail(username);
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user = repository.findByEmail(username);
