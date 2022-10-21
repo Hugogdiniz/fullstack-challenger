@@ -19,23 +19,20 @@ public class UserController {
     //Abrir pagina index
     @GetMapping("/")
     public ModelAndView home() {
-        ModelAndView mav = new ModelAndView("index");
-        return mav;
+        return new ModelAndView("index");
     }
 
     //Abrir pagina de cadastro do usuário
     @GetMapping("/usercreate")
     public ModelAndView homecreate(User user) {
-        ModelAndView mav = new ModelAndView("user-create");
-        return mav;
+        return new ModelAndView("user-create");
     }
 
 
     //Abrir pagina de login do usuário
     @GetMapping("/userlogin")
     public ModelAndView homelogin() {
-        ModelAndView mav = new ModelAndView("user-login");
-        return mav;
+        return new ModelAndView("user-login");
     }
 
 
