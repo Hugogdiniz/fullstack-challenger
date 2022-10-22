@@ -18,8 +18,8 @@
                 <div class="form-items">
                     <h3>Registrar Usuário</h3>
                     <p>Preencha os dados abaixo.</p>
-                    <th:block th:include="/usuario-cadastrado"></th:block>
-                    <th:block th:include="/email-existe"></th:block>
+                    <th:block th:include="/usuario-cadastrado.html"></th:block>
+                    <th:block th:include="/email-existe.html"></th:block>
                     <form method="POST" th:action="@{/usercreate}" th:object="${user}" class="requires-validation">
                         <div class="col-md-12">
                             <input class="form-control" type="text" th:field="*{name}" placeholder="Nome Completo"
