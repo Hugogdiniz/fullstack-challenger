@@ -24,11 +24,14 @@
       });
     });
 
+    $(document).on("focus", ".tel_fone", function() {
+      $(this).mask('(00) 0 0000-0000', {reverse: true});
+    });
+
     $(function () {
       $("#cep").mask('00.000-000', {reverse: true});
       $("#cpf").mask("000.000.000-00", {reverse: true});
       $("#cnpj").mask("00.000.000/0000-00", {reverse: true});
-      $("#telefoneList").mask("(00) 0 0000-0000", {reverse: true});
     });
 
 
@@ -294,7 +297,7 @@
               <td th:text="${list.count}"></td>
               <td>
                 <input th:field="*{phoneList[__${list.index}__].numero}" type="text" placeholder="(DDD) 0 0000-0000"
-                       class="form-control d-inline-block" id="telefoneList"
+                       class="form-control d-inline-block tel_fone" id="telefoneList"
                        value="" required>
               </td>
               <td>
