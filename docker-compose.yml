@@ -1,0 +1,18 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo1
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: adm
+      MONGO_INITDB_ROOT_PASSWORD: 123
+  webapp:
+    image: fullstack-challenge
+    restart: always
+    ports:
+      - 8080:8080
+    links:
+      - mongo
+
