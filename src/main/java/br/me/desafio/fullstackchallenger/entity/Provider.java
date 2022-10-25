@@ -1,7 +1,6 @@
 package br.me.desafio.fullstackchallenger.entity;
 
 import br.me.desafio.fullstackchallenger.enums.PersonType;
-import org.apache.tomcat.jni.Address;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -150,11 +149,12 @@ public class Provider {
 
     @Override
     public String toString() {
-        String test = new String();
+        String test = "";
 
         for (PhoneNumber phone : phoneList) {
             test += phone.getNumero() + " ; ";
         }
         return test;
+
     }
 }

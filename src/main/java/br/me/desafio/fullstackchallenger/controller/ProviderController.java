@@ -7,14 +7,14 @@ import br.me.desafio.fullstackchallenger.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class ProviderController {
+
+    private static final  String CADASTROFORNECEDOR = "cadastro-fornecedor";
 
     @Autowired
     ProviderService service;
@@ -24,8 +24,7 @@ public class ProviderController {
     @GetMapping("/providercreate")
     public ModelAndView homecreate(Provider provider) {
         provider.getPhoneList().add(new PhoneNumber());
-        ModelAndView mav = new ModelAndView("cadastro-fornecedor");
-        return mav;
+        return new ModelAndView(CADASTROFORNECEDOR);
     }
 
     //abrir home após login
@@ -46,7 +45,7 @@ public class ProviderController {
     // editar fornecedor
     @GetMapping("/home/editar/{id}")
     public ModelAndView showUpdateForm(@PathVariable("id") String id) {
-        ModelAndView mav = new ModelAndView("cadastro-fornecedor");
+        ModelAndView mav = new ModelAndView(CADASTROFORNECEDOR);
         Provider provider = service.findById(id);
         mav.addObject("provider", provider);
         return mav;
@@ -56,28 +55,25 @@ public class ProviderController {
     //Cadastro do Fornecedor
     @PostMapping("/providercreate")
     public String create(Provider provider) {
-//        ModelAndView mav = new ModelAndView("UserCreate");
-//        service.createValidation(user);
         service.insert(provider);
         return "redirect:/home";
     }
 
     // adicionar linha de telefone no cadastro do fornecedor
     @RequestMapping(value = "/providercreate", params = {"addRow"})
-    public String addRow(final Provider provider, final BindingResult bindingResult) {
+    public String addRow(final Provider provider) {
         provider.getPhoneList().add(new PhoneNumber());
-        return "cadastro-fornecedor";
+        return CADASTROFORNECEDOR;
     }
 
 
     // remover linha de telefone no cadastro do fornecedor
     @RequestMapping(value = "/providercreate", params = {"removeRow"})
     public String removeRow(
-            final Provider provider, final BindingResult bindingResult,
-            final HttpServletRequest req) {
-        final Integer Id = Integer.valueOf(req.getParameter("removeRow"));
+            final Provider provider, final HttpServletRequest req) {
+        final Integer Id = Integer.parseInt(req.getParameter("removeRow"));
         provider.getPhoneList().remove(Id.intValue());
-        return "cadastro-fornecedor";
+        return CADASTROFORNECEDOR;
     }
 
 }

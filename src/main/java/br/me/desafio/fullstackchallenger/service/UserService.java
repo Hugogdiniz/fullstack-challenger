@@ -5,11 +5,6 @@ import br.me.desafio.fullstackchallenger.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-
-import javax.swing.text.html.Option;
-import java.util.List;
 import java.util.Optional;
 
 @Service
