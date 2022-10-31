@@ -60,7 +60,7 @@ public class ProviderController {
     }
 
     // adicionar linha de telefone no cadastro do fornecedor
-    @RequestMapping(value = "/providercreate", params = {"addRow"})
+    @PostMapping(path = "/providercreate", params = {"addRow"})
     public String addRow(final Provider provider) {
         provider.getPhoneList().add(new PhoneNumber());
         return CADASTROFORNECEDOR;
@@ -68,7 +68,7 @@ public class ProviderController {
 
 
     // remover linha de telefone no cadastro do fornecedor
-    @RequestMapping(value = "/providercreate", params = {"removeRow"})
+    @PostMapping(path = "/providercreate", params = {"removeRow"})
     public String removeRow(
             final Provider provider, final HttpServletRequest req) {
         final Integer Id = Integer.parseInt(req.getParameter("removeRow"));
