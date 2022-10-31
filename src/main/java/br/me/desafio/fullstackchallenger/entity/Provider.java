@@ -149,12 +149,11 @@ public class Provider {
 
     @Override
     public String toString() {
-        String test = "";
-
-        for (PhoneNumber phone : phoneList) {
-            test += phone.getNumero() + " ; ";
+        StringBuilder phones = new StringBuilder();
+        for(PhoneNumber phone : phoneList) {
+            phones.append(phone.getNumero());
+                phones.append(", ");
         }
-        return test;
-
+        return phones.toString();
     }
 }
