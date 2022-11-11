@@ -36,7 +36,7 @@
     function buscaCep() {
       let inputCep = document.querySelector('input[id=cep]')
       let cep = inputCep.value.replace('-', '').replace('.', '');
-      let url = 'http://viacep.com.br/ws/' + cep + '/json';
+      let url = 'http://viacep.com.br/ws/' + cep + '/json/';
 
       $.ajax({
         url: url,
