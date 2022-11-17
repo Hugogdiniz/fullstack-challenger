@@ -32,15 +32,15 @@
       $(".tel_fone").mask('(00) 0 0000-0000', {reverse: true});
     });
 
-    // Solução criando uma dependencia da lib ajax
+
+    // Solução para consulta no back-end
 
     function buscaCep() {
       let inputCep = document.querySelector('input[id=cep]')
       let cep = inputCep.value.replace('-', '').replace('.', '');
-      let url = 'http://viacep.com.br/ws/' + cep + '/json/';
 
       $.ajax({
-        url: url,
+        url: "/buscarcep/" + cep,
         method: 'get',
         dataType: "json",
 
@@ -59,9 +59,42 @@
           console.log('Deu erro')
         },
         complete: ()=> {
-          }
+        }
       })
     }
+
+
+
+    // Solução criando uma dependencia da lib ajax (consulta no front)
+
+    // function buscaCep() {
+    //   let inputCep = document.querySelector('input[id=cep]')
+    //   let cep = inputCep.value.replace('-', '').replace('.', '');
+    //   let url = 'http://viacep.com.br/ws/' + cep + '/json/';
+    //
+    //   $.ajax({
+    //     url: url,
+    //     method: 'get',
+    //     dataType: "json",
+    //
+    //     success: (response) => {
+    //       if (!("erro" in response)) {
+    //         $("#estado").val(response.uf);
+    //         $("#cidade").val(response.localidade);
+    //         $("#rua").val(response.logradouro);
+    //         $("#bairro").val(response.bairro);
+    //         $('#complemento').val(response.complemento);
+    //         console.log(response.localidade);
+    //       } else
+    //         alert("CEP não encontrado.");
+    //     },
+    //     error: () => {
+    //       console.log('Deu erro')
+    //     },
+    //     complete: ()=> {
+    //       }
+    //   })
+    // }
 
     // Solução sem criar uma dependencia com a lib ajax
 
@@ -92,7 +125,7 @@
     // -----------------------------------------------------------------------------------------------------------------
 
 
-    // solução antiga do viaCep
+    // solução antiga do viaCep (consulta no front)
 
     // $(document).ready(function () {
     //
@@ -258,7 +291,7 @@
 
             <div class="col-10">
               <label for="rua" class="form-label">Logradouro</label>
-              <input th:field="*{endereco.rua}" type="text" class="form-control" id="rua" placeholder="Logradouro"
+              <input th:field="*{endereco.logradouro}" type="text" class="form-control" id="rua" placeholder="Logradouro"
                      required>
               <div class="invalid-feedback">
                 Your username is required.
@@ -294,7 +327,7 @@
 
             <div class="col-4">
               <label for="cidade" class="form-label">Cidade</label>
-              <input th:field="*{endereco.cidade}" type="text" class="form-control" id="cidade" placeholder="Cidade"
+              <input th:field="*{endereco.localidade}" type="text" class="form-control" id="cidade" placeholder="Cidade"
                      required>
               <div class="invalid-feedback">
                 Please enter your shipping endereco.
@@ -303,7 +336,7 @@
 
             <div class="col-4">
               <label for="estado" class="form-label">Estado</label>
-              <input th:field="*{endereco.estado}" type="text" class="form-control" id="estado" placeholder="Estado"
+              <input th:field="*{endereco.uf}" type="text" class="form-control" id="estado" placeholder="Estado"
                      required>
               <div class="invalid-feedback">
                 Please enter your shipping endereco.

@@ -11,26 +11,26 @@ public class Endereco {
     @Id
     private String id;
     private String cep;
-    private String rua;
+    private String logradouro;
     private String numero;
     private String complemento;
     private String bairro;
-    private String cidade;
-    private String estado;
+    private String localidade;
+    private String uf;
 
 
     public Endereco() {
     }
 
-    public Endereco(String id, String cep, String rua, String numero, String complemento, String bairro, String cidade, String estado) {
+    public Endereco(String id, String cep, String logradouro, String numero, String complemento, String bairro, String localidade, String uf) {
         this.id = id;
         this.cep = cep;
-        this.rua = rua;
+        this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
         this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
+        this.localidade = localidade;
+        this.uf = uf;
     }
 
     public String getId() {
@@ -49,12 +49,12 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public String getRua() {
-        return rua;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public String getNumero() {
@@ -81,20 +81,20 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getLocalidade() {
+        return localidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getUf() {
+        return uf;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     @Override
@@ -102,12 +102,12 @@ public class Endereco {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Endereco endereco = (Endereco) o;
-        return Objects.equals(id, endereco.id) && Objects.equals(cep, endereco.cep) && Objects.equals(rua, endereco.rua) && Objects.equals(numero, endereco.numero) && Objects.equals(complemento, endereco.complemento) && Objects.equals(bairro, endereco.bairro) && Objects.equals(cidade, endereco.cidade) && Objects.equals(estado, endereco.estado);
+        return Objects.equals(id, endereco.id) && Objects.equals(cep, endereco.cep) && Objects.equals(logradouro, endereco.logradouro) && Objects.equals(numero, endereco.numero) && Objects.equals(complemento, endereco.complemento) && Objects.equals(bairro, endereco.bairro) && Objects.equals(localidade, endereco.localidade) && Objects.equals(uf, endereco.uf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, cep, rua, numero, complemento, bairro, cidade, estado);
+        return Objects.hash(id, cep, logradouro, numero, complemento, bairro, localidade, uf);
     }
 
 
@@ -115,12 +115,12 @@ public class Endereco {
     public String toString() {
         return
                 cep +
-                        " , " + rua +
+                        " , " + logradouro +
                         " , " + numero +
                         " , " + complemento +
                         " , " + bairro +
-                        " , " + cidade +
-                        " , " + estado
+                        " , " + localidade +
+                        " , " + uf
                 ;
     }
 }
